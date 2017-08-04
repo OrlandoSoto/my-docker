@@ -1,9 +1,9 @@
 <html>
 	<head>
-		<title>Ooo-la-la!</title>
+		<title>Orlando Soto-Pastor</title>
 	</head>
 	<body>
-		<h1>Docker Compose</h1>
+		<h1>Docker Compose - PHP with Microservice</h1>
 		<ul>
 			<?php
 			$json = file_get_contents('http://product-service');
