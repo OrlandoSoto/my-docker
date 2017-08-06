@@ -1,4 +1,4 @@
 FROM python:3-onbuild
 COPY . /usr/src/app
-RUN pip install requests
+RUN sudo pip install requests
 CMD ["python","api.py"]
