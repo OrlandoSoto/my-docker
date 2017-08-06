@@ -1,6 +1,8 @@
 <html>
 	<head>
 		<title>Orlando Soto-Pastor</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" type="text/css" href="mystyle.css">
 	</head>
 	<body>
 		<h1>Docker Compose - PHP with Microservices</h1>
@@ -14,10 +16,8 @@
 			$direction = $obj['Predictions'][0][DirectionText];
 			$minutes = $obj['Predictions'][0][Minutes];
 
-			echo "<li>Stop: $stop</li>";
-			echo "<li>Route: $route</li>";
-			echo "<li>Direction: $direction</li>";
-			echo "<li>Next bus: $minutes minutes</li>";
+			echo "<li><b>Stop:</b> $stop <b>Direction:</b> $direction</li>";
+			echo "<li><b>Route:</b> $route <b>Next bus:</b> $minutes minutes</li>";
 
 			?>
 		</ul>
