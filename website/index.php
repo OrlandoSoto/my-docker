@@ -5,7 +5,6 @@
                 <link rel="stylesheet" type="text/css" href="mystyle.css">
 	</head>
 	<body>
-		<h1>Docker Compose - PHP with Microservices</h1>
 		<ul>
 			<?php
 			$json = file_get_contents('http://product-service');
