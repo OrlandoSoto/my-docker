@@ -10,23 +10,15 @@ class Train(Resource):
 	def get(self):
                 currentHour = datetime.datetime.now().strftime("%H")
                 print(currentHour)
+		        # If after 12 noon DC time
                 if(int(datetime.datetime.now().strftime("%H")) >= 16):
-                    print("greater")
-                else:
-                    print("less than")
-
-                url = 'https://api.wmata.com/StationPrediction.svc/json/GetPrediction/B35'
-		# If before noon DC time
-                if(int(datetime.datetime.now().strftime("%H")) <= 16):
                     my_stop = 'B35' #Noma
                 else:
                     my_stop = 'B11' # Glenmont station
                 # Request headers
                 headers = {'api_key': '88c04b279955416f8605d0b76ebc8974'}
 		
-		# Request parameters
-                payload = {'StopID': my_stop}
-                
+                url = 'https://api.wmata.com/StationPrediction.svc/json/GetPrediction/%s' % my_stop                
                 r = requests.get(url, headers=headers) 
                 print(r.json())         
                 return(r.json())

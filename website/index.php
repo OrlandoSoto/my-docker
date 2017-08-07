@@ -15,16 +15,25 @@
 			$direction = $obj['Predictions'][0][DirectionText];
 			$minutes = $obj['Predictions'][0][Minutes];
 
-			echo "<li><b>Stop:</b> $stop <b>Direction:</b> $direction</li>";
-			echo "<li><b>Route:</b> $route <b>Next bus:</b> $minutes minutes</li>";
+			echo "<li><b>From:</b> $stop <b>To:</b> $direction</li>";
+			echo "<li><b>Route:</b> $route <b> - Next bus:</b> $minutes minutes</li><BR>";
 			
 			$train = file_get_contents('http://train-service');
                         $obj = json_decode($train, true);
 			
 			for($i=0; $i<count($obj['Trains']); $i++) {
-				if(strcmp($obj['Trains'][$i]["Destination"],'Glenmont')==0 || strcmp($obj['Trains'][$i]["Destination"],'SilvrSpg')==0 ){
-				echo "From: " . $obj['Trains'][$i]["LocationName"];
-				echo " To: "  . $obj['Trains'][$i]["Destination"];
+				# If starting at Glenmont all trains head towards DC
+				if(strcmp($obj['Trains'][$i]["LocationCode"],'B11')==0){
+					echo "<li><b>From: </b>" . $obj['Trains'][$i]["LocationName"];
+					echo "<b> To: </b>" . $obj['Trains'][$i]["DestinationName"];
+					echo " <b> - Arriving in: </b> "  . $obj['Trains'][$i]["Min"];
+				}
+				# If starting at Noma we need to pick trains with Destination Glenmont OR Silver Spring
+				if(strcmp($obj['Trains'][$i]["DestinationCode"],'B11')==0 || strcmp($obj['Trains'][$i]["DestinationCode"],'B08')==0 ){
+					echo "<li><b>From: </b>" . $obj['Trains'][$i]["LocationName"];
+					echo " <b>To: </b>"  . $obj['Trains'][$i]["DestinationName"];
+					echo " <b> - Arriving in: </b> "  . $obj['Trains'][$i]["Min"];
+					echo "</li>";
 				}
 			}
 
