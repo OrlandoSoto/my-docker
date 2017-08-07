@@ -7,6 +7,12 @@ services:
       - ./product:/usr/src/app
     ports:
       - 5001:80
+  train-service:
+    build: ./train
+    volumes:
+      - ./train:/usr/src/app
+    ports:
+      - 5002:80
   
   website:
     image: php:apache

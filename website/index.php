@@ -7,8 +7,8 @@
 	<body>
 		<ul>
 			<?php
-			$json = file_get_contents('http://product-service');
-			$obj = json_decode($json, true);
+			$bus = file_get_contents('http://product-service');
+			$obj = json_decode($bus, true);
 			
 			$stop = $obj['StopName'];
 			$route = $obj['Predictions'][0][RouteID];
@@ -17,6 +17,16 @@
 
 			echo "<li><b>Stop:</b> $stop <b>Direction:</b> $direction</li>";
 			echo "<li><b>Route:</b> $route <b>Next bus:</b> $minutes minutes</li>";
+			
+			$train = file_get_contents('http://train-service');
+                        $obj = json_decode($train, true);
+			
+			for($i=0; $i<count($obj['Trains']); $i++) {
+				if(strcmp($obj['Trains'][$i]["Destination"],'Glenmont')==0 || strcmp($obj['Trains'][$i]["Destination"],'SilvrSpg')==0 ){
+				echo "From: " . $obj['Trains'][$i]["LocationName"];
+				echo " To: "  . $obj['Trains'][$i]["Destination"];
+				}
+			}
 
 			?>
 		</ul>

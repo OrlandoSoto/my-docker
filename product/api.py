@@ -2,7 +2,7 @@
 import datetime
 import requests
 import json
-import http.client, base64
+import base64
 from flask import Flask
 from flask_restful import Resource, Api
 
