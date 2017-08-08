@@ -3,7 +3,8 @@ body {
 }
 
 li {
-    font: 16px Arial, sans-serif;
+    font: 14px Arial, sans-serif;
+    margin-left: 10px;
 }
 
 h1 {
