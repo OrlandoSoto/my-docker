@@ -13,7 +13,7 @@ class Product(Resource):
 	
 	def get(self):
 		# If before noon DC time
-                if(int(datetime.datetime.now().strftime("%H")) <= 16):
+                if(int(datetime.datetime.now().strftime("%H")) >= 16):
                     my_stop = '2000684' #Randolph and Bluhill
                 else:
                     my_stop = '2001185' # Glenmont station

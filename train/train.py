@@ -11,7 +11,7 @@ class Train(Resource):
                 currentHour = datetime.datetime.now().strftime("%H")
                 print(currentHour)
 		        # If after 12 noon DC time
-                if(int(datetime.datetime.now().strftime("%H")) >= 16):
+                if(int(datetime.datetime.now().strftime("%H")) <= 16):
                     my_stop = 'B35' #Noma
                 else:
                     my_stop = 'B11' # Glenmont station
