@@ -18,7 +18,7 @@ To run from the console 'cd' into the directory where "docker-compose.yml" resid
 docker-compose up -d
 ```
 Docker-compose stands up three separate containers. 
-* Two Flask/python apps serve json code
+* Two Flask/python applications acting as microservices to serve json code
 * One HTML/PHP container parses json from the other two containers and display the pertinent info
 
 PHP Application will bes served to localhost:80
