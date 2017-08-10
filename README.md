@@ -3,19 +3,23 @@ My Docker Compose project
 
 Docker Compose - PHP with Microservices
 ### What problem does this solve?
-* Currently, most transit mobile applications display several bus/train routes travelling in different directions. This causes the mobile screen to be filled with transit information that a user may not find beneficial.
+* Currently, many mobile transit applications display several bus/train routes travelling in different directions. This causes the mobile screen to be filled with transit information that a user may not find beneficial.
 
-* This application calculates the local time to determine which bus/train direction to display. For example in the morning, it displays bus/train information heading from Glenmont MD to Washington DC. In the afternoon, the application displays bus/train routes from Washington DC to MD.
+* Many mobile transit application require the user to navigate several menu layers in order to select the specific bus/train route information.
 
-* This application only displays the bus/train routes I use to commute to/from work resulting in a cleaner UI, as it does not include routes I don't normally travel.
+### What does this application do?
+
+* This application calculates the local time to determine which bus/train direction to display. For example in the morning, it displays bus/train information departing Glenmont MD towards Washington DC. In the afternoon, the application displays bus/train routes travelling from Washington DC to MD.
+
+* This application only displays the bus/train routes I use to commute to/from work resulting in a cleaner UI, as it does not include routes I don't normally travel during my daily commute.
 
 To run from the console 'cd' into the directory where "docker-compose.yml" resides then::
 ```
 docker-compose up -d
 ```
 Docker-compose stands up three separate containers. 
-* Two Flask/python apps serve up straight json code
-* One HTML/PHP container parses json from the other containers and display the pertinent info
+* Two Flask/python apps serve json code
+* One HTML/PHP container parses json from the other two containers and display the pertinent info
 
 PHP Application will bes served to localhost:80
 
@@ -26,7 +30,11 @@ In the morning (before GMT 1600) the information is served for bus/trains leavin
 In the afternoon (after GMT 1600) the bus/train information is for Noma towards Silver Spring/Glenmont, MD
 
 ### train/train.py
-Pulls train info from: https://api.wmata.com/StationPrediction.svc/json/GetPrediction/B35
+This code pulls train arrival info from: https://api.wmata.com/StationPrediction.svc/json/GetPrediction/B35
+The Glenmont station is the final stop on the Red line train so all trains travel southbound towards Washington DC.
+
+At the Noma train station, red line trains travel northbound towards Silver Spring/Glenmont MD and also southbound towards Shady Grove.
+The PHP code is reponsible for filtering the trains heading towards Silver Spring/Glenmont MD
 
 ### website/index.php
 PHP code to display the info pulled from product/api.pi
