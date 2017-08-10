@@ -2,6 +2,12 @@
 My Docker Compose project
 
 Docker Compose - PHP with Microservices
+### What problem does this solve?
+* Currently, most transit mobile applications display several bus/train routes travelling in different directions. This causes the mobile screen to be filled with transit information that a user may not find beneficial.
+
+* This application calculates the local time to determine which bus/train direction to display. For example in the morning, it displays bus/train information heading from Glenmont MD to Washington DC. In the afternoon, the application displays bus/train routes from Washington DC to MD.
+
+* This application only displays the bus/train routes I use to commute to/from work resulting in a cleaner UI, as it does not include routes I don't normally travel.
 
 To run from the console 'cd' into the directory where "docker-compose.yml" resides then::
 ```
