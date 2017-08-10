@@ -41,5 +41,9 @@ At the Noma train station, red line trains travel northbound towards Silver Spri
 The PHP code is reponsible for filtering the trains heading towards Silver Spring/Glenmont MD
 
 ### website/index.php
-PHP code to display the info pulled from product/api.pi
+PHP code is used to display the info pulled from product/api.py and trains/train.py
+
+The PHP code also parses the JSON in order to extract the relevant bus/train arrival information
+
+
 Grumpycat place holder for TBD graphic
