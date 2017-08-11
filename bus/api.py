@@ -27,7 +27,7 @@ class Product(Resource):
                 # Request the bus arrivala data
                 r = requests.get('https://api.wmata.com/NextBusService.svc/json/jPredictions?', params=payload, headers=headers)
                 # Return the enitre JSON and the PHP code will parse it
-		return(r.json())
+                return(r.json())
 
 api.add_resource(Product, '/')
 if __name__=='__main__':
