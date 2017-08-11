@@ -10,12 +10,13 @@ class Train(Resource):
 	def get(self):
                 currentHour = datetime.datetime.now().strftime("%H")
                 print(currentHour)
-		        # If after 12 noon DC time
-                if(int(datetime.datetime.now().strftime("%H")) >= 16):
-                    my_stop = 'B35' #Noma
-                else:
+		        # If before 12 noon DC time
+                if(int(datetime.datetime.now().strftime("%H")) <= 16):
                     my_stop = 'B11' # Glenmont station
-                # Request headers
+                else:
+                    my_stop = 'B35' #Noma
+                
+		# Request headers
                 headers = {'api_key': '88c04b279955416f8605d0b76ebc8974'}
 		
                 url = 'https://api.wmata.com/StationPrediction.svc/json/GetPrediction/%s' % my_stop                
