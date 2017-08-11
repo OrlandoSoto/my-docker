@@ -13,7 +13,7 @@ Docker Compose - PHP with Python Microservices
 
 * This application calculates the local Washington DC time to determine which bus/train direction to display. For example in the morning, when I commute to work, the application displays bus/train information departing Glenmont MD towards Washington DC. In the afternoon, when I commute from work the application displays bus/train routes travelling from Washington DC to MD.
 
-* This application only displays the bus/train routes I use to commute to/from work resulting in a cleaner display, as it does not include routes I don't normally travel during my daily commute.
+* This application only displays the bus/train routes I use to commute to/from work resulting in a cleaner display, as it does not include routes I do not normally travel during my daily commute.
 
 * This application displays text information that is the most useful for regular commuters without unecessary map or transit graphics.
 
