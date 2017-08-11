@@ -16,7 +16,7 @@
     $direction = $obj['Predictions'][0][DirectionText];
     $minutes = $obj['Predictions'][0][Minutes];
 
-    echo "<li><b>From:</b> $stop";
+    echo "<li><b>Bus departing:</b> $stop";
     echo "<BR><b>To:</b> $direction";
     echo "<BR><b>Route:</b> $route <b> - Next bus:</b> $minutes minutes</li><BR>";
 			
@@ -26,7 +26,7 @@
     for($i=0; $i<count($obj['Trains']); $i++) {
     # If starting at Glenmont all trains head towards DC
       if(strcmp($obj['Trains'][$i]["LocationCode"],'B11')==0){
-        echo "<li><b>Train from: </b>" . $obj['Trains'][$i]["LocationName"];
+        echo "<li><b>Train departing: </b>" . $obj['Trains'][$i]["LocationName"];
 	echo "<BR><b>To: </b>" . $obj['Trains'][$i]["DestinationName"];
 	echo "<BR><b>Arriving in: </b> "  . $obj['Trains'][$i]["Min"];
 	echo "<BR>";
