@@ -15,7 +15,7 @@ class Product(Resource):
                 if(int(datetime.datetime.now().strftime("%H")) <= 16):
                     my_stop = '2000684' #Randolph and Bluhill
                 # Else select bus route from train station to home
-		else:
+                else:
                     my_stop = '2001185' # Glenmont station
                 
 		# Request headers
