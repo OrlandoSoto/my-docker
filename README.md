@@ -28,7 +28,7 @@ Docker-compose stands up three separate containers.
 
 PHP Application will be served to localhost:80
 
-## what's under the hood?
+## What code is under the hood?
 
 ### website/index.php
 PHP code is used to display the info pulled from bus/api.py and trains/train.py
