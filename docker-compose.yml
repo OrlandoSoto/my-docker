@@ -1,10 +1,10 @@
 version: '2'
 
 services:
-  product-service:
-    build: ./product
+  bus-service:
+    build: ./bus
     volumes: 
-      - ./product:/usr/src/app
+      - ./bus:/usr/src/app
     ports:
       - 5001:80
   train-service:
@@ -21,4 +21,5 @@ services:
     ports:
       - 80:80
     depends_on:
-      - product-service
+      - bus-service
+      - train-service

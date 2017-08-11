@@ -7,7 +7,7 @@
 	<body>
 		<ul>
 			<?php
-			$bus = file_get_contents('http://product-service');
+			$bus = file_get_contents('http://bus-service');
 			$obj = json_decode($bus, true);
 			
 			$stop = $obj['StopName'];
