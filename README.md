@@ -18,7 +18,7 @@ Docker Compose - PHP with Python Microservices
 * This application displays text information that is the most useful for regular commuters without unecessary map or transit graphics.
 
 ## How to build and run this application
-From the console 'cd' into the directory where "docker-compose.yml" resides and use this command to buld and run the three containers:
+From the console 'cd' into the directory where "docker-compose.yml" resides and use this command to build and run the three containers:
 ```
 docker-compose up -d
 ```
