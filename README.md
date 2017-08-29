@@ -49,3 +49,9 @@ At the Noma train station, red line trains travel northbound towards Silver Spri
 The PHP code is reponsible for filtering the trains heading towards Silver Spring/Glenmont MD
 
 Grumpycat place holder for TBD graphic
+
+## Where can I see it?
+
+Go to : http://ec2-18-220-53-62.us-east-2.compute.amazonaws.com/
+
+The three docker containers reside in an EC2 instance, AWS Linux, free-tier instance
