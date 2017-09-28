@@ -1,0 +1,9 @@
+- name: Run using a project directory
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - docker_service:
+        project_src: .
+        state: present
+
