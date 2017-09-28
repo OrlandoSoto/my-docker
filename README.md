@@ -3,7 +3,7 @@
 Docker Compose - PHP with Python Microservices
 
 ## What problem does this solve?
-* Many existing mobile transit applications display several bus/train routes travelling in many different directions. This causes the mobile screen to be filled with transit information that a regular commuter may not find beneficial. A regular commuter is typically insterested in one or two bus/train routes to travel to/from work
+* Many existing mobile transit applications display several bus/train routes travelling in many different directions. This causes the mobile screen to be filled with transit information that a regular commuter may not find beneficial. A regular commuter is typically interested in one or two bus/train routes to travel to/from work
 
 * Many existing mobile transit applications require the user to navigate several menu layers in order to view the desired bus/train route information. 
 
