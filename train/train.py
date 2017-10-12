@@ -14,7 +14,7 @@ class Train(Resource):
                 if(int(datetime.datetime.now().strftime("%H")) <= 16):
                     my_stop = 'B11' # Glenmont station
                 else:
-                    my_stop = 'B35' #Noma
+                    my_stop = 'A02' # Farragut North
                 
 		# Request headers
                 headers = {'api_key': '88c04b279955416f8605d0b76ebc8974'}
