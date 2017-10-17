@@ -41,6 +41,5 @@
       }
     ?>
   </ul>
-  <img src="http://s2.quickmeme.com/img/6d/6d63d092ef1a698433fd38b898451ab0c989df43a7389e5ca1324c9d4af35e42.jpg" width="400" height="400" max-width: 100%"> 
 </body>
 </html>
