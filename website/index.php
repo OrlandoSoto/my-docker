@@ -30,31 +30,36 @@
     echo "<li><b>Bus : $route_2 at $stop_2 </b></li>";
     echo "<li><b>To: $direction_2 </b></li>";  
     echo "<li><b>Next bus: $minutes_2 minutes</li></b><BR>";		
+    echo "<hr align='left' width='50%'>";
 
-    #echo "<hr><BR>";	
 
     $train = file_get_contents('http://train-service');
     $obj = json_decode($train, true);
 
-
+    # Show PM Trains
     if(isset($obj['pm_train']['Trains'])){
         for ($i=0; $i<count($obj['pm_train']['Trains']); $i++) {
-            echo "<li><b>Train Departing: </b>" . $obj['pm_train']['Trains'][$i]["LocationName"];
-	          echo "<BR><b>To: </b>" . $obj['pm_train']['Trains'][$i]["DestinationName"];
-	          echo "<BR><b>Next Train: </b> "  . $obj['pm_train']['Trains'][$i]["Min"];
-	          echo "<BR><BR>";
+            echo "<li><b>Train Departing: " . $obj['pm_train']['Trains'][$i]["LocationName"] . "</b></li>";
+	          echo "<li><b>To: " . $obj['pm_train']['Trains'][$i]["DestinationName"] . "</b></li>";
+	          echo "<li><b>Next Train: "  . $obj['pm_train']['Trains'][$i]["Min"] . "</b></li>";
+	          echo "<BR>";
         }
+        echo "<hr align='left' width='50%'>";
     }
+    # Show AM Trains
     else{
         for ($i=0; $i<count($obj); $i++){
             for ($k=0; $k<count($obj[(string)$i]['Trains']); $k++){
-                echo "<li><b>Train Departing: " . $obj[(string)$i]['Trains'][(string)$k]["LocationName"] . "</b></li>";
-                echo "<li><b>To: " . $obj[(string)$i]['Trains'][(string)$k]["DestinationName"] . "</b></li>";
-                echo "<li><b>Next Train: " . $obj[(string)$i]['Trains'][(string)$k]["Min"] . "</b></li>";
-                echo "<BR>";
+                # Don't show trains travelling to Shady Grove in the AM
+                if(strcmp($obj[(string)$i]['Trains'][(string)$k]["DestinationName"],'Shady Grove')!==0){
+                    echo "<li><b>Train Departing: " . $obj[(string)$i]['Trains'][(string)$k]["LocationName"] . "</b></li>";
+                    echo "<li><b>To: " . $obj[(string)$i]['Trains'][(string)$k]["DestinationName"] . "</b></li>";
+                    echo "<li><b>Next Train: " . $obj[(string)$i]['Trains'][(string)$k]["Min"] . "</b></li>";
+                    echo "<BR>";
+                }
             }
 
-            echo "<hr>";
+            echo "<hr align='left' width='50%'>";
         }
     }
     ?>
