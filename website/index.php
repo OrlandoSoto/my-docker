@@ -11,34 +11,52 @@
     $bus = file_get_contents('http://bus-service');
     $obj = json_decode($bus, true);
 			
-    $stop = $obj['StopName'];
-    $route = $obj['Predictions'][0][RouteID];
-    $direction = $obj['Predictions'][0][DirectionText];
-    $minutes = $obj['Predictions'][0][Minutes];
+    $stop_1 = $obj['bus_1']['StopName'];
+    $stop_2 = $obj['bus_2']['StopName'];
 
-    echo "<li><b>Bus departing:</b> $stop";
-    echo "<BR><b>To:</b> $direction";
-    echo "<BR><b>Route:</b> $route <b> - Next bus:</b> $minutes minutes</li><BR>";
-			
+    $route_1 = $obj['bus_1']['Predictions'][0]['RouteID'];
+    $route_2 = $obj['bus_2']['Predictions'][0]['RouteID'];
+
+    $direction_1 = $obj['bus_1']['Predictions'][0]['DirectionText'];
+    $direction_2 = $obj['bus_2']['Predictions'][0]['DirectionText'];
+
+    $minutes_1 = $obj['bus_1']['Predictions'][0]['Minutes'];
+    $minutes_2 = $obj['bus_2']['Predictions'][0]['Minutes'];
+
+    echo "<li><b>Bus : $route_1 at $stop_1 </b></li>";
+    echo "<li><b>To: $direction_1 </b></li>";
+    echo "<li><b>Next bus: $minutes_1 minutes</li></b><BR>";
+
+    echo "<li><b>Bus : $route_2 at $stop_2 </b></li>";
+    echo "<li><b>To: $direction_2 </b></li>";  
+    echo "<li><b>Next bus: $minutes_2 minutes</li></b><BR>";		
+
+    #echo "<hr><BR>";	
+
     $train = file_get_contents('http://train-service');
     $obj = json_decode($train, true);
-			
-    for($i=0; $i<count($obj['Trains']); $i++) {
-    # If starting at Glenmont all trains head towards DC
-      if(strcmp($obj['Trains'][$i]["LocationCode"],'B11')==0){
-        echo "<li><b>Train departing: </b>" . $obj['Trains'][$i]["LocationName"];
-	echo "<BR><b>To: </b>" . $obj['Trains'][$i]["DestinationName"];
-	echo "<BR><b>Arriving in: </b> "  . $obj['Trains'][$i]["Min"];
-	echo "<BR>";
-      }
-      # If starting at Noma we need to pick trains with Destination Glenmont OR Silver Spring
-        if(strcmp($obj['Trains'][$i]["DestinationCode"],'B11')==0 || strcmp($obj['Trains'][$i]["DestinationCode"],'B08')==0 ){
-          echo "<li><b>Train from: </b>" . $obj['Trains'][$i]["LocationName"];
-	  echo "<BR><b>To: </b>"  . $obj['Trains'][$i]["DestinationName"];
-	  echo "<BR><b>Arriving in: </b> "  . $obj['Trains'][$i]["Min"];
-	  echo "<BR>";
+
+
+    if(isset($obj['pm_train']['Trains'])){
+        for ($i=0; $i<count($obj['pm_train']['Trains']); $i++) {
+            echo "<li><b>Train Departing: </b>" . $obj['pm_train']['Trains'][$i]["LocationName"];
+	          echo "<BR><b>To: </b>" . $obj['pm_train']['Trains'][$i]["DestinationName"];
+	          echo "<BR><b>Next Train: </b> "  . $obj['pm_train']['Trains'][$i]["Min"];
+	          echo "<BR><BR>";
         }
-      }
+    }
+    else{
+        for ($i=0; $i<count($obj); $i++){
+            for ($k=0; $k<count($obj[(string)$i]['Trains']); $k++){
+                echo "<li><b>Train Departing: " . $obj[(string)$i]['Trains'][(string)$k]["LocationName"] . "</b></li>";
+                echo "<li><b>To: " . $obj[(string)$i]['Trains'][(string)$k]["DestinationName"] . "</b></li>";
+                echo "<li><b>Next Train: " . $obj[(string)$i]['Trains'][(string)$k]["Min"] . "</b></li>";
+                echo "<BR>";
+            }
+
+            echo "<hr>";
+        }
+    }
     ?>
   </ul>
 </body>
