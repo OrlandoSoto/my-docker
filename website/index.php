@@ -66,7 +66,10 @@
     }
 
     for ($i=0; $i<count($incidents['Incidents']); $i++){
-        echo "<li><b>Incidents: " . $incidents['Incidents'][$i]["Description"] . "</b></li>";
+
+        if(strcmp($incidents['Incidents'][$i]['LinesAffected'], 'RD;' )==0){
+            echo "<li><b>Incidents: " . $incidents['Incidents'][$i]['Description'] . "</b></li>";
+        }
     }
 
     ?>
