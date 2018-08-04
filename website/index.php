@@ -29,7 +29,7 @@
     $minutes_1 = $bus['bus_1']['Predictions'][0]['Minutes'];
     $minutes_2 = $bus['bus_2']['Predictions'][0]['Minutes'];
 
-    echo "<li><b>Bus : $route_1 at $stop_1 </b></li>";
+    echo "<li><b>Bus: $route_1 at $stop_1 </b></li>";
     echo "<li><b>To: $direction_1 </b></li>";
     echo "<li><b>Next bus: $minutes_1 minutes</li></b><BR>";
 

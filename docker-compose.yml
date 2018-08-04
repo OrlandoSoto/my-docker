@@ -22,7 +22,7 @@ services:
       - 5003:80
 
   website:
-    image: php:apache
+    image: php:7.1.20-apache-jessie
     volumes:
       - ./website:/var/www/html
     ports:
@@ -30,3 +30,4 @@ services:
     depends_on:
       - bus-service
       - train-service
+      - incidents-service

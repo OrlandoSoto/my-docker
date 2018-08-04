@@ -1,5 +1,7 @@
-FROM python:3-onbuild
+FROM python:3.6.6-jessie
+RUN apt-get update
+RUN apt-get upgrade -y
 COPY . /usr/src/app
 RUN pip install --upgrade pip
-RUN pip install requests
-CMD ["python","incident.py"]
+RUN pip install -r /usr/src/app/requirements.txt
+CMD ["python","/usr/src/app/incident.py"]
