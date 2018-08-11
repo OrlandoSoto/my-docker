@@ -8,6 +8,8 @@
 <body>
   <ul>
     <?php
+    date_default_timezone_set("America/New_York");
+    
     $bus = file_get_contents('http://bus-service');
     $bus = json_decode($bus, true);
 
@@ -29,6 +31,8 @@
     $minutes_1 = $bus['bus_1']['Predictions'][0]['Minutes'];
     $minutes_2 = $bus['bus_2']['Predictions'][0]['Minutes'];
 
+    echo "<h4>Updated " . date("Y/m/d") . "at " . date("h:i:sa") . "<br></h4>";
+    
     echo "<li><b>Bus: $route_1 at $stop_1 </b></li>";
     echo "<li><b>To: $direction_1 </b></li>";
     echo "<li><b>Next bus: $minutes_1 minutes</li></b><BR>";
