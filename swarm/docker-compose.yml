@@ -1,0 +1,13 @@
+version: "3"
+services:
+  visualizer:
+    image: alexellis2/visualizer-arm:latest
+    ports:
+      - "8080:8080"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+networks:
+  webnet:
