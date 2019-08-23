@@ -4,9 +4,42 @@ services:
     image: alexellis2/visualizer-arm:latest
     ports:
       - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
     deploy:
-      placement:
-        constraints: [node.role == manager]
+      replicas: 4
+    networks:
+      - webnet
+  website:
+    image: orlando168/transit:website-arm 
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 4
+    networks:
+      - webnet
+  incidents-service:
+    image: orlando168/transit:incidents
+    ports:
+      - "5002:80"
+    deploy:
+      replicas: 4
+    networks:
+      - webnet
+  bus-service:
+    image: orlando168/transit:bus
+    ports:
+      - "5001:80"
+    deploy:
+      replicas: 4
+    networks:
+      - webnet
+  train-service:
+    image: orlando168/transit:train
+    ports:
+      - "5000:80"
+    deploy:
+      replicas: 4
     networks:
       - webnet
 networks:
